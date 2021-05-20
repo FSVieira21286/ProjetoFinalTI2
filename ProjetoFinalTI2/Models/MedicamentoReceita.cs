@@ -8,9 +8,9 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace ProjetoFinalTI2.Models
 {
-    public class MedicoReceita
+    public class MedicamentoReceita
     {
-        public MedicoReceita()
+        public MedicamentoReceita()
         {
 
 
@@ -29,4 +29,3 @@ namespace ProjetoFinalTI2.Models
         public string Medicamento { get; set; }
     }
 }
-medico receita

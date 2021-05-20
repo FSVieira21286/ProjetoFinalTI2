@@ -1,4 +1,4 @@
-﻿sing ProjetoFinalTI2.Models;
+﻿using ProjetoFinalTI2.Models;
 
 using Microsoft.EntityFrameworkCore;
 
@@ -58,7 +58,7 @@ namespace ProjetoFinalTI2.Data
             public DbSet<Medico> Medico { get; set; }
             public DbSet<Medicamento> Medicamento { get; set; }
             public DbSet<Utente> Utente { get; set; }
-            public DbSet<MedicoReceita> MedicoReceita { get; set; }
+            public DbSet<MedicamentoReceita> MedicamentoReceita { get; set; }
             public DbSet<Fotografias> Fotografias { get; set; }
             public DbSet<Receita> Receita { get; set; }
 
