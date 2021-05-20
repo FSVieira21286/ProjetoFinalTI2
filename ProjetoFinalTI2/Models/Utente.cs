@@ -31,10 +31,10 @@ namespace ProjetoFinalTI2.Models
         public DateTime DataNasc { get; set; }
 
 
-        /// <summary>
+           /// <summary>
         /// Nif do utilizador utente
         /// </summary>
-        [StringLength(9, MinimumLength = 9, ErrorMessage = "Deve introduzir o NIF completo")]
+        [RegularExpression("[^0-9]{9}", ErrorMessage = "Introduza apenas números")]
         [Required(ErrorMessage = "Deve introduzir o seu NIF")]
         [Display(Name = "Número de Identificação Fiscal")]
         public string NIF { get; set; }
