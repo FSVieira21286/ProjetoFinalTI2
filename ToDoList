@@ -1,0 +1,6 @@
+CENAS PARA FAZER:
+
+signal R - chat medico utente
+diagrama de classes, ver no discord
+decidir se fotografias é uma tabela, ou duas (para médico e utente)
+Na classe utente, lista de receitas
