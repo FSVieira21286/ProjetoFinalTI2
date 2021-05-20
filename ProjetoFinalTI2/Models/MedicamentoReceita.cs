@@ -12,20 +12,27 @@ namespace ProjetoFinalTI2.Models
     {
         public MedicamentoReceita()
         {
-
-
-
         }
-
-
-
         /// <summary>
-        /// id da receita médica
+        /// PK para a tabela do relacionamento entre Receitas e Medicamentos 
+
         /// </summary>
         [Key]
-        public int id { get; set; }
+        public int Id { get; set; }  //Primary Key do relacionamento
 
+        /// <summary>
+        /// FK para a Receita
+        /// </summary>
+        [ForeignKey(nameof(Receita))]
+        public int ReceitaFK { get; set; }
+        public Receita Receita { get; set; }
 
-        public string Medicamento { get; set; }
+        /// <summary>
+        /// FK para o Medicamento
+        /// </summary>
+        [ForeignKey(nameof(Medicamento))]  // [ForeignKey("Medicamento")]
+        public int MedicamentoFK { get; set; }
+        public Medicamento Medicamento { get; set; }
+
     }
 }
