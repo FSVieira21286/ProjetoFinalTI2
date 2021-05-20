@@ -37,8 +37,8 @@ namespace ProjetoFinalTI2.Data
                 new Utente { UtenteId = 2, Nome = "Gabriel Bonet", DataNasc = new DateTime(1998, 3, 27), NIF = "987654321" }
                 );
 
-            modelBuilder.Entity<MedicoReceita>().HasData(
-                new ReceitaMedica { }
+            modelBuilder.Entity<MedicamentoReceita>().HasData(
+                new MedicamentoReceita{ }
                 );
 
             modelBuilder.Entity<Fotografias>().HasData(
@@ -47,7 +47,7 @@ namespace ProjetoFinalTI2.Data
 
 
             modelBuilder.Entity<Receita>().HasData(
-                new MedicoReceita { }
+                new Receita { }
                 );
 
             //relacionamento medicamento - receita

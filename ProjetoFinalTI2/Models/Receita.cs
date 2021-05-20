@@ -7,7 +7,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace ProjetoFinalTI2.Models
 {
-    public class Medica
+    public class Receita
     {
         /// <summary>
         /// Id da receita médica
