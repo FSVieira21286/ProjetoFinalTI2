@@ -7,9 +7,6 @@ using System.Threading.Tasks;
 
 namespace ProjetoFinalTI2.Models { 
 
-
-
-    
     /// <summary>
     /// Fotografias dos Médicos
     /// </summary>
@@ -20,9 +17,6 @@ namespace ProjetoFinalTI2.Models {
         /// </summary>
         [Key]
         public int Id { get; set; }
-
-
-        ///olarelola
 
         /// <summary>
         /// Nome do ficheiro com a fotografia do Médico
@@ -36,4 +30,6 @@ namespace ProjetoFinalTI2.Models {
         public Medico Medico { get; set; }
     }
 }
+
+
 
