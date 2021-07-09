@@ -15,14 +15,14 @@ namespace ProjetoFinalTI2.Models {
     /// </summary>
     public class Fotografias
     {
-
-
-
         /// <summary>
         /// Identificador da fotografia
         /// </summary>
         [Key]
         public int Id { get; set; }
+
+
+        ///olarelola
 
         /// <summary>
         /// Nome do ficheiro com a fotografia do Médico
@@ -36,3 +36,4 @@ namespace ProjetoFinalTI2.Models {
         public Medico Medico { get; set; }
     }
 }
+
