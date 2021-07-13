@@ -20,6 +20,7 @@ namespace ProjetoFinalTI2.Models
         [Key]
         public int Id { get; set; }  //Primary Key do relacionamento
 
+
         /// <summary>
         /// FK para a Receita
         /// </summary>

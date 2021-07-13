@@ -18,8 +18,8 @@ namespace ProjetoFinalTI2.Data
             base.OnModelCreating(modelBuilder);
 
             modelBuilder.Entity<Medico>().HasData(
-                new Medico { MedicoId = 1, Nome = "JoÃ£o Joca" },
-                new Medico { MedicoId = 2, Nome = "Paulo Guedes" }
+                new Medico { MedicoId = 1, Nome = "JoÃ£o Joca", Fotografia = "JoaoJoca.jpg" },
+                new Medico { MedicoId = 2, Nome = "Paulo Guedes", Fotografia = "PauloGuedes.jpg" }
                 );
 
             modelBuilder.Entity<Medicamento>().HasData(
@@ -35,11 +35,6 @@ namespace ProjetoFinalTI2.Data
                 new MedicamentoReceita { }
                 );
 
-            modelBuilder.Entity<Fotografias>().HasData(
-                new Fotografias { Id = 1, Fotografia = "JoaoJoca.jpg", MedicoFK = 1 }
-                );
-
-
             modelBuilder.Entity<Receita>().HasData(
                 new Receita { }
                 );
@@ -53,9 +48,8 @@ namespace ProjetoFinalTI2.Data
         public DbSet<Medicamento> Medicamento { get; set; }
         public DbSet<Utente> Utente { get; set; }
         public DbSet<MedicamentoReceita> MedicamentoReceita { get; set; }
-        public DbSet<Fotografias> Fotografias { get; set; }
         public DbSet<Receita> Receita { get; set; }
 
-     
+    
     }
 }

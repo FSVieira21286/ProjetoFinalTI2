@@ -10,13 +10,11 @@ namespace ProjetoFinalTI2.Models
     public class Medico
     {
 
-
         public Medico()
         {
             // inicializar a lista de Fotografias dos Medicos
-            ListasDeFotografias = new HashSet<Fotografias>();
+            //ListasDeFotografias = new HashSet<Fotografias>();
         }
-
 
         /// <summary>
         /// id do médico
@@ -33,10 +31,16 @@ namespace ProjetoFinalTI2.Models
 
 
         /// <summary>
+        /// Nome do ficheiro com a fotografia do Médico
+        /// </summary>
+
+        public String Fotografia { get; set; }
+
+        /// <summary>
         /// Lista das Fotografias dos Médicos
         /// </summary>
 
-        public ICollection< Fotografias> ListasDeFotografias { get; set; }
+       // public ICollection< Fotografias> ListasDeFotografias { get; set; }
 
         // ##########################################################
 

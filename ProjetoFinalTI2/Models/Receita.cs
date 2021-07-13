@@ -28,12 +28,6 @@ namespace ProjetoFinalTI2.Models
         public DateTime ReceitaData { get; set; }
 
 
-        //---------------------------
-
-
-
-
-
         /// <summary>
         /// FK para o médico que receitou a receita médica
         /// </summary>
@@ -54,17 +48,12 @@ namespace ProjetoFinalTI2.Models
         //lista de medicamentos receitas
 
 
-
-
         /// <summary>
         /// FK do(s) medicamentos receitados
         /// </summary>
-        /// [ForeignKey(nameof(Medicamento))]
-        /// public int MedicIDFK { get; set; }
-        ///public int MedicID { get; set; }
-
-
-
+         [ForeignKey(nameof(Medicamento))]
+          public int MedicIDFK { get; set; }
+          public int MedicID { get; set; }
 
 
     }

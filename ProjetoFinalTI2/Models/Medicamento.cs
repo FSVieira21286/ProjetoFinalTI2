@@ -30,7 +30,7 @@ namespace ProjetoFinalTI2.Models
         public decimal Preco { get; set; }
 
 
-        //nsdvnjkn
+     
 
     }
 }

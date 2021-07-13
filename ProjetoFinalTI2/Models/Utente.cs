@@ -39,8 +39,6 @@ namespace ProjetoFinalTI2.Models
         public string NIF { get; set; }
 
 
-
-
         //lista de receitas
 
 
