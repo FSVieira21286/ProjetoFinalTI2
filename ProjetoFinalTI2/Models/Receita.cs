@@ -43,18 +43,15 @@ namespace ProjetoFinalTI2.Models
         /// </summary>
         [ForeignKey(nameof(Utente))]
         public int UtenteIDFK { get; set; }
-        public int UtenteID { get; set; }
+        public Utente UtenteID { get; set; }
 
         //lista de medicamentos receitas
 
+        public virtual ICollection<MedicamentoReceita> MedicamentoReceita { get; set; }
 
-        /// <summary>
-        /// FK do(s) medicamentos receitados
-        /// </summary>
-         [ForeignKey(nameof(Medicamento))]
-          public int MedicIDFK { get; set; }
-          public int MedicID { get; set; }
-
-
+        public Receita()
+        {
+            MedicamentoReceita = new HashSet<MedicamentoReceita>();
+        }
     }
 }
