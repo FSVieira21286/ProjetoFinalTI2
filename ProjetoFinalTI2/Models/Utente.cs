@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Collections.ObjectModel;
 
 namespace ProjetoFinalTI2.Models
 {
@@ -40,7 +41,12 @@ namespace ProjetoFinalTI2.Models
 
 
         //lista de receitas
+        public virtual ICollection<Receita> Receitas { get; set;}
 
+        public Utente()
+        {
+            Receitas = new HashSet<Receita>();
+        }
 
 
 

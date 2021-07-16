@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using ProjetoFinalTI2.Data;
 
 namespace ProjetoFinalTI2.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20210713231508_atBaseDados")]
+    partial class atBaseDados
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -353,7 +355,7 @@ namespace ProjetoFinalTI2.Data.Migrations
                             ReceitaId = 1,
                             MedicoIDFK = 2,
                             Preco = 5m,
-                            ReceitaData = new DateTime(2021, 7, 14, 1, 27, 58, 359, DateTimeKind.Local).AddTicks(8497),
+                            ReceitaData = new DateTime(2021, 7, 14, 0, 15, 8, 35, DateTimeKind.Local).AddTicks(6792),
                             UtenteIDFK = 2
                         });
                 });
@@ -474,7 +476,7 @@ namespace ProjetoFinalTI2.Data.Migrations
                         .HasForeignKey("MedicoId");
 
                     b.HasOne("ProjetoFinalTI2.Models.Utente", "UtenteID")
-                        .WithMany("Receitas")
+                        .WithMany()
                         .HasForeignKey("UtenteId");
 
                     b.Navigation("MedicoID");
@@ -490,11 +492,6 @@ namespace ProjetoFinalTI2.Data.Migrations
             modelBuilder.Entity("ProjetoFinalTI2.Models.Receita", b =>
                 {
                     b.Navigation("MedicamentoReceita");
-                });
-
-            modelBuilder.Entity("ProjetoFinalTI2.Models.Utente", b =>
-                {
-                    b.Navigation("Receitas");
                 });
 #pragma warning restore 612, 618
         }

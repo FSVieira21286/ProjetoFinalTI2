@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using ProjetoFinalTI2.Data;
 
 namespace ProjetoFinalTI2.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20210714001532_UtentesReceitas")]
+    partial class UtentesReceitas
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -353,7 +355,7 @@ namespace ProjetoFinalTI2.Data.Migrations
                             ReceitaId = 1,
                             MedicoIDFK = 2,
                             Preco = 5m,
-                            ReceitaData = new DateTime(2021, 7, 14, 1, 27, 58, 359, DateTimeKind.Local).AddTicks(8497),
+                            ReceitaData = new DateTime(2021, 7, 14, 1, 15, 31, 876, DateTimeKind.Local).AddTicks(6746),
                             UtenteIDFK = 2
                         });
                 });

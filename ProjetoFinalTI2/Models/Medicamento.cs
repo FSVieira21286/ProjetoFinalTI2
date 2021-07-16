@@ -29,8 +29,13 @@ namespace ProjetoFinalTI2.Models
         [Display(Name = "Preço")]
         public decimal Preco { get; set; }
 
+        public virtual ICollection<MedicamentoReceita> MedicamentoReceita { get; set; }
 
-     
+        public Medicamento()
+        {
+            MedicamentoReceita = new HashSet<MedicamentoReceita>();
+        }
+
 
     }
 }

@@ -18,8 +18,8 @@ namespace ProjetoFinalTI2.Data
             base.OnModelCreating(modelBuilder);
 
             modelBuilder.Entity<Medico>().HasData(
-                new Medico { MedicoId = 1, Nome = "JoÃ£o Joca", Fotografia = "JoaoJoca.jpg" },
-                new Medico { MedicoId = 2, Nome = "Paulo Guedes", Fotografia = "PauloGuedes.jpg" }
+                new Medico { MedicoId = 1, Nome = "JoÃ£o Joca", Fotografia = "JoaoJoca.jpg", Especialidade = "Genecologista" },
+                new Medico { MedicoId = 2, Nome = "Paulo Guedes", Fotografia = "PauloGuedes.jpg", Especialidade = "Morto" }
                 );
 
             modelBuilder.Entity<Medicamento>().HasData(
@@ -32,11 +32,11 @@ namespace ProjetoFinalTI2.Data
                 );
 
             modelBuilder.Entity<MedicamentoReceita>().HasData(
-                new MedicamentoReceita { }
+                new MedicamentoReceita {Id = 1, ReceitaFk = 1, MedicamentoFk = 1}
                 );
 
             modelBuilder.Entity<Receita>().HasData(
-                new Receita { }
+                new Receita { ReceitaId = 1, Preco = 5 , ReceitaData = DateTime.Now, MedicoIDFK = 2, UtenteIDFK = 2}
                 );
 
             //relacionamento medicamento - receita
