@@ -1,50 +1,122 @@
-﻿<!DOCTYPE html>
+﻿@using Microsoft.AspNetCore.Identity
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="utf-8" />
+    <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - ProjetoFinalTI2</title>
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    @*<link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />*@
     <link rel="stylesheet" href="~/css/site.css" />
+
+
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="TemplateMo">
+    <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900&display=swap" rel="stylesheet">
+
+    <title>Lava Landing Page HTML Template</title>
+    <!--
+
+    Lava Landing Page
+
+    https://templatemo.com/tm-540-lava-landing-page
+
+    -->
+    <!-- Additional CSS Files -->
+    <link rel="stylesheet" type="text/css" href="assets/css/bootstrap.min.css">
+
+    <link rel="stylesheet" type="text/css" href="assets/css/font-awesome.css">
+
+    <link rel="stylesheet" href="assets/css/templatemo-lava.css">
+
+    <link rel="stylesheet" href="assets/css/owl-carousel.css">
+
+
+
+
+
 </head>
 <body>
-    <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">ProjetoFinalTI2</a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Receitas" asp-action="">Minhas Receitas</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Utentes" asp-action="">Utentes</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="AboutUs">Sobre nós</a>
-                        </li>
-                    </ul>
-                    <partial name="_LoginPartial" />
+
+    <!-- ***** Header Area Start ***** -->
+    <header class="header-area header-sticky">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <nav class="main-nav">
+                        <!-- ***** Logo Start ***** -->
+                        <a href="" class="logo">
+                            BPM
+                        </a>
+                        <!-- ***** Logo End ***** -->
+                        <!-- ***** Menu Start ***** -->
+                        <ul class="nav">
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                            </li>
+                            <li class="submenu" style="margin-top:3%">
+                                <a href="javascript:;">Mais Opções</a>
+                                <ul>
+
+                                    <li class="nav-item">
+                                        <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">About</a>
+                                    </li>
+                                    @if (SignInManager.IsSignedIn(User))
+                                    {
+                                        @if (User.IsInRole("Utente"))
+                                        {
+                                            <li class="nav-item">
+                                                <a class="nav-link text-dark" asp-area="" asp-controller="Receitas" asp-action="">Minhas Receitas</a>
+                                            </li>
+                                        }
+                                            @if (User.IsInRole("Medico") || User.IsInRole("Admin"))
+                                            {
+                                                <li class="nav-item">
+                                                    <a class="nav-link text-dark" asp-area="" asp-controller="Utentes" asp-action="">Utentes</a>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a class="nav-link text-dark" asp-area="" asp-controller="Receitas" asp-action="Create">Admistrar Receita</a>
+                                                </li>
+                                            }
+                                            if (User.IsInRole("Admin"))
+                                            {
+                                                <li class="nav-item">
+                                                    <a class="nav-link " asp-area="" asp-controller="Medicos" asp-action=""
+                                                       style="font:'ITC Avant Garde Gothic Std'; color:#FFB81D">Médicos</a>
+                                                </li>
+                                            }
+                                        }
+                                </ul>
+                            </li>
+                        </ul>
+                        <partial name="_LoginPartial" />
+                        <a class='menu-trigger'>
+                            <span>Menu</span>
+                        </a>
+                        <!-- ***** Menu End ***** -->
+                    </nav>
                 </div>
             </div>
-        </nav>
+        </div>
     </header>
-    <div class="container">
+    <!-- ***** Header Area End ***** -->
+
+
+
+
+
+
+
+    <div @*class="container"*@>
         <main role="main" class="pb-3">
             @RenderBody()
         </main>
     </div>
-
+    <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
     <footer class="border-top footer text-muted">
         <div class="container">
             &copy; 2021 - ProjetoFinalTI2 - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>

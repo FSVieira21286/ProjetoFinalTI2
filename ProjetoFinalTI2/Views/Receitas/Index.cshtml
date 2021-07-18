@@ -1,53 +1,48 @@
 ﻿@model IEnumerable<ProjetoFinalTI2.Models.Receita>
 
-@{
-    ViewData["Title"] = "Index";
-}
+@{ ViewData["Title"] = "Index"; }
 
-<h1>Receitas</h1>
+<div class="container">
+    <br /><br /><br /><br/>
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Preco)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ReceitaData)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.MedicoIDFK)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.UtenteIDFK)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Preco)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ReceitaData)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.MedicoIDFK)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.UtenteIDFK)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.ReceitaId">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.ReceitaId">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.ReceitaId">Delete</a>
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
+
+    <h1>Receitas</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Preco)
+                </th>
+                <th>
+                   Data
+                </th>
+                <th>
+                    Medico
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Preco)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ReceitaData)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.MedicoID.Nome)
+                    </td>
+                    <td>
+                        <a asp-action="Edit" asp-route-id="@item.ReceitaId">Edit</a> |
+                        <a asp-action="Details" asp-route-id="@item.ReceitaId">Details</a> |
+                        <a asp-action="Delete" asp-route-id="@item.ReceitaId">Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

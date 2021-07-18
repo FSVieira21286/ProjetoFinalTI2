@@ -36,6 +36,8 @@ namespace ProjetoFinalTI2.Models
 
         public String Fotografia { get; set; }
 
+        public String lig { get; set; }
+
         /// <summary>
         /// Lista das Fotografias dos Médicos
         /// </summary>

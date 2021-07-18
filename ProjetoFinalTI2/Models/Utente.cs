@@ -39,6 +39,10 @@ namespace ProjetoFinalTI2.Models
         [Display(Name = "Número de Identificação Fiscal")]
         public string NIF { get; set; }
 
+        public string Sexo { get; set; }
+
+        public string lig { get; set; }
+
 
         //lista de receitas
         public virtual ICollection<Receita> Receitas { get; set;}

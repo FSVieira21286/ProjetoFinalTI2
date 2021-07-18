@@ -117,11 +117,8 @@ namespace ProjetoFinalTI2.Data.Migrations
                 columns: new[] { "MedicoId", "Especialidade", "Fotografia", "Nome" },
                 values: new object[,]
                 {
-                    { 1, "Genecologista", "RodrigoRamos.jpg", "Dr. Rodrigo Ramos" },
-                    { 2, "Pediatria", "TiagoGomes.jpg", "Dr. Tiago Gomes" },
-                    { 3, "Neurologista", "CarlosSilva.jpg", "Dr. Carlos Silva" },
-                    { 4, "Trauma", "FabioBarata.jpg", "Dr. Fábio Barata" }
-
+                    { 1, "Genecologista", "JoaoJoca.jpg", "JoÃ£o Joca" },
+                    { 2, "Morto", "PauloGuedes.jpg", "Paulo Guedes" }
                 });
 
             migrationBuilder.InsertData(

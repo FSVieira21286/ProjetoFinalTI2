@@ -16,7 +16,7 @@ namespace ProjetoFinalTI2.Data.Migrations
 #pragma warning disable 612, 618
             modelBuilder
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
-                .HasAnnotation("ProductVersion", "5.0.7")
+                .HasAnnotation("ProductVersion", "5.0.8")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
@@ -293,6 +293,9 @@ namespace ProjetoFinalTI2.Data.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("lig")
+                        .HasColumnType("nvarchar(max)");
+
                     b.HasKey("MedicoId");
 
                     b.ToTable("Medico");
@@ -353,7 +356,7 @@ namespace ProjetoFinalTI2.Data.Migrations
                             ReceitaId = 1,
                             MedicoIDFK = 2,
                             Preco = 5m,
-                            ReceitaData = new DateTime(2021, 7, 14, 1, 27, 58, 359, DateTimeKind.Local).AddTicks(8497),
+                            ReceitaData = new DateTime(2021, 7, 18, 16, 20, 51, 625, DateTimeKind.Local).AddTicks(1549),
                             UtenteIDFK = 2
                         });
                 });
@@ -374,6 +377,12 @@ namespace ProjetoFinalTI2.Data.Migrations
 
                     b.Property<string>("Nome")
                         .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Sexo")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("lig")
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("UtenteId");

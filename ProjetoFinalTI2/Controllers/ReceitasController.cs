@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -13,16 +15,22 @@ namespace ProjetoFinalTI2.Controllers
     public class ReceitasController : Controller
     {
         private readonly ApplicationDbContext _context;
+        private readonly UserManager<IdentityUser> _userManager;
 
-        public ReceitasController(ApplicationDbContext context)
+        public ReceitasController(ApplicationDbContext context, UserManager<IdentityUser> userManager)
         {
             _context = context;
+            _userManager = userManager;
         }
 
+        [Authorize]
         // GET: Receitas
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Receita.ToListAsync());
+            var user = await _userManager.GetUserAsync(User);
+            var util = await _context.Utente.Include(i => i.Receitas).ThenInclude(r => r.MedicoID).FirstOrDefaultAsync(u => u.lig == user.Id);
+            if (util == null)return Redirect("./../");
+            return View(util.Receitas.ToList());
         }
 
         // GET: Receitas/Details/5
@@ -43,10 +51,14 @@ namespace ProjetoFinalTI2.Controllers
             }
             return View(receita);
         }
-
+        [Authorize]
+        [Authorize(Roles = "Admin,Medico")]
         // GET: Receitas/Create
-        public IActionResult Create()
+        public async Task<IActionResult> Create()
         {
+            ViewData["Medico"] = new SelectList(_context.Medico, "MedicoId", "Nome");
+            ViewData["Utente"] = new SelectList(_context.Utente, "UtenteId", "Nome");
+            ViewData["Medicamento"] = _context.Medicamento.ToList();
             return View();
         }
 
@@ -55,15 +67,30 @@ namespace ProjetoFinalTI2.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("ReceitaId,Preco,ReceitaData,MedicoIDFK,UtenteIDFK")] Receita receita)
+        public async Task<IActionResult> Create([Bind("ReceitaId,Preco,ReceitaData,MedicoIDFK,UtenteIDFK")] Receita receita, String medicamentos)
         {
             if (ModelState.IsValid)
             {
+                String[] meds = medicamentos.Trim().Split(" ");
+                foreach(String item in meds)
+                {
+                    Medicamento med = await _context.Medicamento.FirstOrDefaultAsync(m => m.MedicId == Int32.Parse(item));
+                    MedicamentoReceita medrec = new MedicamentoReceita
+                    {
+                        Medicamento = med,
+                        MedicamentoFk = Int32.Parse(item),
+                        Receita = receita,
+                        ReceitaFk = receita.ReceitaId
+                    };
+                    _context.Add(medrec);
+                }
+                receita.MedicoID = await _context.Medico.FirstOrDefaultAsync(m => m.MedicoId == receita.MedicoIDFK);
+                receita.UtenteID = await _context.Utente.FirstOrDefaultAsync(m => m.UtenteId == receita.UtenteIDFK);
                 _context.Add(receita);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            return View(receita);
+            return View();
         }
 
         // GET: Receitas/Edit/5

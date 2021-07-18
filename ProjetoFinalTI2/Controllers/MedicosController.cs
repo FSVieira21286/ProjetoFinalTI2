@@ -115,6 +115,7 @@ namespace ProjetoFinalTI2.Controllers
             }
             return View(medico);
         }
+
         // GET: Medicos/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
@@ -132,6 +133,7 @@ namespace ProjetoFinalTI2.Controllers
 
             return View(medico);
         }
+
         // POST: Medicos/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
@@ -149,8 +151,3 @@ namespace ProjetoFinalTI2.Controllers
         }
     }
 }
-
-
-
-
-

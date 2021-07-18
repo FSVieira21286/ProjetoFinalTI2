@@ -50,6 +50,6 @@ namespace ProjetoFinalTI2.Data
         public DbSet<MedicamentoReceita> MedicamentoReceita { get; set; }
         public DbSet<Receita> Receita { get; set; }
 
-        //ola filipe!!
+    
     }
 }

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -13,10 +14,12 @@ namespace ProjetoFinalTI2.Controllers
     public class UtentesController : Controller
     {
         private readonly ApplicationDbContext _context;
+        private readonly UserManager<IdentityUser> _userManager;
 
-        public UtentesController(ApplicationDbContext context)
+        public UtentesController(ApplicationDbContext context, UserManager<IdentityUser> userManager)
         {
             _context = context;
+            _userManager = userManager;
         }
 
         // GET: Utentes
@@ -149,6 +152,26 @@ namespace ProjetoFinalTI2.Controllers
         private bool UtenteExists(int id)
         {
             return _context.Utente.Any(e => e.UtenteId == id);
+        }
+
+        [HttpPost, ActionName("TornarMedico")]
+        public async Task<IActionResult> TornarMedico(int id)
+        {
+            var utente = await _context.Utente.FindAsync(id);
+            Medico med = new Medico
+            {
+                Nome = utente.Nome,
+                Especialidade = "A defenir",
+                Fotografia = "A defenir",
+                lig = utente.lig
+            };
+            var user = await _userManager.FindByIdAsync(utente.lig);
+            await _userManager.RemoveFromRoleAsync(user, "Utente");
+            await _userManager.AddToRoleAsync(user, "Medico");
+            _context.Medico.Add(med);
+            _context.Utente.Remove(utente);
+            await _context.SaveChangesAsync();
+            return RedirectToAction(nameof(Index));
         }
     }
 }
