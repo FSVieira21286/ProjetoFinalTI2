@@ -18,7 +18,7 @@ namespace ProjetoFinalTI2.Data
             base.OnModelCreating(modelBuilder);
 
             modelBuilder.Entity<Medico>().HasData(
-                new Medico { MedicoId = 1, Nome = "Joao Joca", Fotografia = "JoaoJoca.jpg", Especialidade = "Genecologista" },
+                new Medico { MedicoId = 1, Nome = "JoÃ£o Joca", Fotografia = "JoaoJoca.jpg", Especialidade = "Genecologista" },
                 new Medico { MedicoId = 2, Nome = "Paulo Guedes", Fotografia = "PauloGuedes.jpg", Especialidade = "Morto" }
                 );
 
