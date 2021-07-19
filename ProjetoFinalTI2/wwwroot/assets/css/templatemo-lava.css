@@ -678,10 +678,10 @@ welcome
   color: #191a20;
 }
 
-.welcome-area .header-text h1 em {
-  font-style: normal;
-  color: #fba70b;
-}
+    .welcome-area .header-text h1 em {
+        font-style: normal;
+        color: #4d9c81;
+    }
 
 .welcome-area .header-text p {
   font-weight: 300;
