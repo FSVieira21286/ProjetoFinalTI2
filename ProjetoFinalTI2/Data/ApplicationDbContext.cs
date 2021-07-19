@@ -36,7 +36,7 @@ namespace ProjetoFinalTI2.Data
                 );
 
             modelBuilder.Entity<Receita>().HasData(
-                new Receita { ReceitaId = 1, Preco = 5 , ReceitaData = DateTime.Now, MedicoIDFK = 2, UtenteIDFK = 2}
+                new Receita { ReceitaId = 1, Preco = "5" , ReceitaData = DateTime.Now, MedicoIDFK = 2, UtenteIDFK = 2}
                 );
 
             //relacionamento medicamento - receita

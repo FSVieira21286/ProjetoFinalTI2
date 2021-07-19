@@ -330,8 +330,8 @@ namespace ProjetoFinalTI2.Data.Migrations
                     b.Property<int?>("MedicoId")
                         .HasColumnType("int");
 
-                    b.Property<decimal>("Preco")
-                        .HasColumnType("decimal(18,2)");
+                    b.Property<string>("Preco")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("ReceitaData")
                         .HasColumnType("datetime2");
@@ -355,8 +355,8 @@ namespace ProjetoFinalTI2.Data.Migrations
                         {
                             ReceitaId = 1,
                             MedicoIDFK = 2,
-                            Preco = 5m,
-                            ReceitaData = new DateTime(2021, 7, 18, 16, 20, 51, 625, DateTimeKind.Local).AddTicks(1549),
+                            Preco = "5",
+                            ReceitaData = new DateTime(2021, 7, 19, 1, 41, 15, 267, DateTimeKind.Local).AddTicks(9952),
                             UtenteIDFK = 2
                         });
                 });

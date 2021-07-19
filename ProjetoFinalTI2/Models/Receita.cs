@@ -19,7 +19,7 @@ namespace ProjetoFinalTI2.Models
         /// Preço total da receita médica
         /// </summary>
         [Display(Name = "Preço do(s) medicamento(s) total")]
-        public decimal Preco { get; set; }
+        public string Preco { get; set; }
 
 
         ///<sumary>
