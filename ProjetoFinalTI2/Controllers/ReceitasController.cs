@@ -67,11 +67,16 @@ namespace ProjetoFinalTI2.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("ReceitaId,Preco,ReceitaData,MedicoIDFK,UtenteIDFK")] Receita receita, String medicamentos)
+        public async Task<IActionResult> Create([Bind("ReceitaId,ReceitaData,UtenteIDFK")] Receita receita, String medicamentos, String Preco) 
         {
-            if (ModelState.IsValid)
-            {
-                String[] meds = medicamentos.Trim().Split(" ");
+            var user = await _userManager.GetUserAsync(User);
+            Medico medicoadd = await _context.Medico.FirstOrDefaultAsync(w => w.lig == user.Id);
+            receita.MedicoID = medicoadd;
+            receita.MedicoIDFK = medicoadd.MedicoId;
+            receita.Preco = Preco;
+
+
+            String[] meds = medicamentos.Trim().Split(" ");
                 foreach(String item in meds)
                 {
                     Medicamento med = await _context.Medicamento.FirstOrDefaultAsync(m => m.MedicId == Int32.Parse(item));
@@ -89,8 +94,7 @@ namespace ProjetoFinalTI2.Controllers
                 _context.Add(receita);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
-            }
-            return View();
+            
         }
 
         // GET: Receitas/Edit/5
